@@ -1,5 +1,5 @@
 Django==2.2.13
 Pillow==10.0.1
-psycopg2-binary==2.9.9
+psycopg2-binary==2.8.6
 pytz==2018.5
 sqlparse==0.4.4
