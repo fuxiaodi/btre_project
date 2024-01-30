@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>up load shape file</title>
-   <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-</form>
+{% extends 'base.html' %}
+{% block title %} | upload Map {% endblock %}
 
-</head>
-<body>
 
-</body>
-</html>
+   {% block content %}
+      <div class="container">
+             <form method="post" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 {{ form.as_p }}
+                  <input type="file" name="file">
+                <button type="submit" name="action" value="upload">Upload</button>
+                <button type="submit" name="action" value="convert">Convert</button>
+          </form>
+          {% if url %}
+              <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+          {% endif %}
+      </div>
+   {% endblock %}
+
+

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'realtors.apps.RealtorsConfig',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
+    'convert.apps.ConvertConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,16 +80,16 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'btredb',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Fxd1986@',
-#         'HOST': 'localhost',
-#         # 'PORT':'5432'
-#     }
-# }
+DATABASES = {  # development environment
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'btredb',
+        'USER': 'postgres',
+        'PASSWORD': 'Fxd1986@',
+        'HOST': 'localhost',
+        # 'PORT':'5432'
+    }
+}
 
 
 # Password validation
@@ -112,17 +113,22 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
+#*****************************生产环境begin*********************
+USE_TZ = False
+#*****************************生产环境end*********************
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
+#*****************************生产环境begin*********************
+# LANGUAGE_CODE = 'en-us'
+#
+# TIME_ZONE = 'UTC'  # 生成环境的time zone
+#
+# USE_I18N = True
+#
+# USE_L10N = True
+#
+# USE_TZ = True
+#*****************************生产环境end*********************
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -143,7 +149,10 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+
+#*****************************生产环境begin*********************
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
+#*****************************生产环境end*********************
